@@ -1,0 +1,20 @@
+{
+  "name": "ficus.io",
+  "version": "0.0.1",
+  "description": "ficus.io website and widgets",
+  "main": "widget/widget.js",
+  "author": "Code Hipsters",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^4.2.0",
+    "vite-plugin-css-injected-by-js": "^3.1.0"
+  },
+  "dependencies": {
+    "d3-force": "^3.0.0",
+    "preact": "^10.13.1"
+  }
+}
