@@ -7,7 +7,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "vite build"
+    "build": "vite build web && vite build widget"
   },
   "devDependencies": {
     "vite": "^4.2.0",

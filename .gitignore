@@ -22,4 +22,4 @@ node_modules
 *.sw?
 .vercel
 
-public/d/
+/dist

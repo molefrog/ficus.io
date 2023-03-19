@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import { createPoll } from "/widget.js";
+
+      const config = {
+        question: "What is the best album of 2016?",
+        url: "ficus.io",
+        answers: [
+          {
+            id: "a1",
+            color: "rgba(61, 118, 230, 1.00)",
+            label: "Chance The Rapper – Coloring Book",
+          },
+          { id: "a2", color: "rgba(241, 196, 15, 1.00)", label: "Beyoncé – Lemonade" },
+          {
+            id: "a3",
+            color: "rgba(230, 126, 34, 1.00)",
+            label: "Frank Ocean – Blonde",
+          },
+          { id: "a4", color: "rgba(231, 76, 60, 1.00)", label: "David Bowie – Star" },
+          {
+            id: "a5",
+            color: "rgba(142, 68, 173, 1.00)",
+            label: "Kanye West – The Life Of Pablo",
+          },
+        ],
+      };
+
+      const [update] = createPoll(document.getElementById("root"), { config, type: "bar" });
+
+      update({
+        votes: [
+          { id: "p1", answers: ["a1", "a2"] },
+          { id: "p2", answer: "a2" },
+          { id: "p3", answers: ["a2"] },
+        ],
+      });
+    </script>
+  </body>
+</html>
