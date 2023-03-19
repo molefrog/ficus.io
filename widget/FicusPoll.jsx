@@ -1,4 +1,4 @@
-import React from "react";
+import { h } from "preact";
 
 import ClassicPoll from "./ClassicPoll/ClassicPoll.jsx";
 import BubblePoll from "./BubblePoll/BubblePoll.jsx";

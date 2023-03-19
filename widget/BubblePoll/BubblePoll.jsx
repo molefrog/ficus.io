@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { h, Component } from "preact";
 import { forceSimulation, forceCollide, forceCenter } from "d3-force";
 
 import pointForce from "./point-force";

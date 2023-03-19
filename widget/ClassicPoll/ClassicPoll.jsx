@@ -1,4 +1,4 @@
-import React from "react";
+import { h } from "preact";
 import styles from "./ClassicPoll.module.css";
 
 const ClassicPoll = ({ config, summary, width, height }) => {

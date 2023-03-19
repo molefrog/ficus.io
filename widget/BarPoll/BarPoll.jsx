@@ -1,4 +1,4 @@
-import React from "react";
+import { h } from "preact";
 import styles from "./BarPoll.module.css";
 
 const Bar = ({ width, bar, bars }) => {
