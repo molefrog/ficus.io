@@ -1,4 +1,5 @@
 import { h } from "preact";
+import { useRef, useLayoutEffect } from "preact/hooks";
 
 import ClassicPoll from "./ClassicPoll/ClassicPoll.jsx";
 import BubblePoll from "./BubblePoll/BubblePoll.jsx";
@@ -10,11 +11,20 @@ const Polls = {
   bar: BarPoll,
 };
 
+// "4:2" => 0.5
+const parseAspectRatio = (ratio) => {
+  if (typeof ratio === "string") {
+    const [width, height] = ratio.split(":");
+    return parseInt(width) / parseInt(height);
+  }
+
+  return ratio;
+};
+
 /**
  * Entry point for the Ficus Poll widget
- * TODO: resize (fit/fill), theme (font, colors, etc.)
  * */
-export const FicusPoll = ({ config, votes, type }) => {
+export const FicusPoll = ({ config, votes, type, className }) => {
   const Component = Polls[type] || Polls.classic;
 
   const normalizedVotes = votes.map((vote) => {
@@ -24,14 +34,52 @@ export const FicusPoll = ({ config, votes, type }) => {
 
   const summary = pollSummary(config, normalizedVotes);
 
+  const aspectRatio = parseAspectRatio(config.aspectRatio || "4:3");
+  const baseWidth = 1024;
+
+  const parentRef = useRef(null);
+
+  const resize = useRef((parent = parentRef.current) => {
+    const w = parent.offsetWidth;
+    const slide = parent.childNodes[0];
+
+    slide.style = `
+      transform-origin: 0 0;
+      top: 0;
+      left: 0;
+      position: absolute;
+      transform: scale(${w / baseWidth})`;
+  });
+
+  useLayoutEffect(() => {
+    if (!parentRef.current) return;
+    resize.current();
+
+    const observer = new ResizeObserver((entries) => resize.current());
+    observer.observe(parentRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <Component
-      width="1024px"
-      height="768px"
-      config={config}
-      votes={normalizedVotes}
-      summary={summary}
-    />
+    <div
+      ref={parentRef}
+      className={className}
+      style={{
+        paddingBottom: `calc(100% / ${aspectRatio})`,
+        position: "relative",
+        background: "white", // todo
+      }}
+    >
+      <div>
+        <Component
+          width={`${baseWidth}px`}
+          height={`${baseWidth / aspectRatio}px`}
+          config={config}
+          votes={normalizedVotes}
+          summary={summary}
+        />
+      </div>
+    </div>
   );
 };
 
