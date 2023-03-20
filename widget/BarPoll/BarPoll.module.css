@@ -1,20 +1,21 @@
 .poll {
+  font-family: system-ui;
+  font-size: 22px;
+  color: black;
+
   box-sizing: border-box;
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
-  font-family: Helvetica;
   padding: 16px;
 }
 
 .barTooltipInner {
   background-color: #222;
   color: white;
-
   font-size: 22px;
   font-weight: bold;
   padding: 6px 10px;
-
   border-radius: 4px;
 }
 
@@ -22,34 +23,10 @@
   padding-bottom: 8px;
 }
 
-.total {
-  display: inline-block;
-
-  border: 2px solid black;
-  border-radius: 4px;
-
-  color: black;
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 36px;
-
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-
-  height: 36px;
-  padding: 8px 16px;
-}
-
 .subheaderInner {
-  display: inline-flex;
-  align-items: center;
-
   background-color: black;
-  padding: 6px 14px;
+  padding: 4px 12px;
   border-radius: 4px;
-
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
 }
 
 .header {
@@ -63,8 +40,6 @@
 .subheader {
   font-size: 24px;
   text-align: center;
-  padding-top: 4px;
-  font-weight: 300;
   flex: 0 0 auto;
   color: #eee;
   text-align: center;
@@ -75,11 +50,10 @@
 }
 
 .subheaderLink {
-  color: white;
-  font-size: 38px;
+  color: inherit;
   text-decoration: underline;
   font-weight: bold;
-  margin-left: 12px;
+  display: inline-block;
 }
 
 .pollChart {
@@ -132,7 +106,6 @@
 }
 
 .label {
-  color: "#444";
   font-size: 18px;
   text-align: center;
   padding: 5px;

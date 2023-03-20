@@ -1,8 +1,11 @@
 .poll {
+  font-family: system-ui;
+  font-size: 22px;
+  color: black;
+
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
-  font-family: Helvetica;
   padding: 30px 40px;
   box-sizing: border-box;
 }
@@ -10,12 +13,10 @@
 .question {
   font-size: 42px;
   font-weight: bold;
-  padding-bottom: 8px;
 }
 
 .subheader {
   font-size: 26px;
-  margin-bottom: 36px;
 }
 
 .subheader-link {
@@ -25,6 +26,10 @@
   padding: 2px 5px;
   font-size: 28px;
   background-color: #fdfd3d;
+}
+
+.results {
+  margin-top: 40px;
 }
 
 .result {
@@ -41,10 +46,11 @@
 
 .percent {
   font-size: 42px;
+  line-height: 28px;
   font-weight: bold;
   padding-left: 25px;
-  width: 120px;
-  align-self: center;
+  width: 100px;
+  align-self: flex-end;
   flex-shrink: 0;
   text-align: left;
 }

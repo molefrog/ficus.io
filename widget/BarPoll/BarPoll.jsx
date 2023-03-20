@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, Fragment } from "preact";
 import styles from "./BarPoll.module.css";
 
 const Bar = ({ width, bar, bars }) => {
@@ -37,18 +37,20 @@ const BarPoll = ({ config, summary, width, height }) => {
 
   return (
     <div className={styles.poll} style={{ width, height }}>
-      {config.url && (
-        <div className={styles.subheader}>
-          <div className={styles.subheaderInner}>
-            {summary.totalVotes} votes on
-            <span className={styles.subheaderLink}>{config.url}</span>
-          </div>
-
-          <div className={styles.total}>{summary.totalVotes}</div>
-        </div>
-      )}
-
       <div className={styles.header}>{config.question}</div>
+
+      <div className={styles.subheader}>
+        <div className={styles.subheaderInner}>
+          {config.url ? (
+            <>
+              {summary.totalVotes} votes on{" "}
+              <span className={styles.subheaderLink}>{config.url}</span>
+            </>
+          ) : (
+            <>{summary.totalVotes} votes</>
+          )}
+        </div>
+      </div>
 
       <div className={styles.votes}>
         <div className={styles.bars}>
