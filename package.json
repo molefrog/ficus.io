@@ -2,7 +2,6 @@
   "name": "ficus.io",
   "version": "0.0.1",
   "description": "ficus.io website and widgets",
-  "main": "widget/widget.js",
   "author": "Code Hipsters",
   "private": true,
   "license": "MIT",
