@@ -50,14 +50,32 @@
         font-weight: 500;
       }
 
-      #slide {
-        width: 1024px;
+      .slides {
+        display: grid;
+        gap: 6px;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 32px 0;
+      }
+
+      .slides__slide {
+        background: #fafafa;
+        overflow: hidden;
+        border: 1px solid #f0f0f0;
+        border-radius: 4px;
+        aspect-ratio: 4/3;
+        box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.02);
       }
     </style>
   </head>
   <body>
     <main class="main">
-      <img class="main__logo" src="/ficus-logo.svg" alt="Ficus.io logo" />
+      <img
+        class="main__logo"
+        width="32px"
+        height="32px"
+        src="/ficus-logo.svg"
+        alt="Ficus.io logo"
+      />
       <p>
         <a class="main__ficus-link" href="https://ficus.io">Ficus</a> <i>was</i> an app for making
         online presentations with real-time polls and instant feedback from the audience. It was
@@ -69,11 +87,15 @@
         inspire others to pursue their dreams of building <i>something fun</i>.
       </p>
 
-      <div id="slide"></div>
+      <div class="slides">
+        <div class="slides__slide slides__slide--classic"></div>
+        <div class="slides__slide slides__slide--bar"></div>
+      </div>
     </main>
 
     <script type="module">
-      import { createPoll } from "/widget.js";
+      // import { createPoll } from "http://localhost:3000/widget.js";
+      import { createPoll } from "https://ficus.io/widget.js";
 
       const config = {
         question: "What is the best album of 2016?",
@@ -99,15 +121,27 @@
         ],
       };
 
-      // const [update] = createPoll(document.getElementById("slide"), { config, type: "bar" });
+      const [update_1] = createPoll(document.querySelector(".slides__slide--classic"), {
+        config,
+        type: "classic",
+        votes: [
+          { id: "p1", answers: ["a1", "a2"] },
+          { id: "p2", answer: "a2" },
+          { id: "p3", answers: ["a2"] },
+          { id: "p4", answers: ["a3"] },
+          { id: "p5", answers: ["a4"] },
+        ],
+      });
 
-      // update({
-      //   votes: [
-      //     { id: "p1", answers: ["a1", "a2"] },
-      //     { id: "p2", answer: "a2" },
-      //     { id: "p3", answers: ["a2"] },
-      //   ],
-      // });
+      const [update_2] = createPoll(document.querySelector(".slides__slide--bar"), {
+        config,
+        type: "bar",
+        votes: [
+          { id: "p1", answers: ["a1", "a2"] },
+          { id: "p2", answer: "a2" },
+          { id: "p3", answers: ["a2"] },
+        ],
+      });
     </script>
   </body>
 </html>

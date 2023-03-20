@@ -6,7 +6,7 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
-  padding: 30px 40px;
+  padding: 48px 64px;
   box-sizing: border-box;
 }
 

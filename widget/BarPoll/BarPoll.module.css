@@ -7,7 +7,7 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;
-  padding: 16px;
+  padding: 48px 64px;
 }
 
 .barTooltipInner {
@@ -30,11 +30,11 @@
 }
 
 .header {
-  padding-top: 20px;
-  padding-bottom: 15px;
+  padding-bottom: 16px;
   font-size: 42px;
   text-align: center;
   flex: 0 0 auto;
+  font-weight: 600;
 }
 
 .subheader {
@@ -67,7 +67,6 @@
   flex-direction: column;
   justify-content: stretch;
   align-items: stretch;
-  padding: 20px 0;
 }
 
 .bars {
@@ -115,5 +114,4 @@
 .labelCol {
   flex-shrink: 0;
   padding: 0 5px;
-  padding-bottom: 20px;
 }
