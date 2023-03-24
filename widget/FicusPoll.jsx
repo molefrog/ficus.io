@@ -3,11 +3,13 @@ import { useRef, useLayoutEffect } from "preact/hooks";
 
 import ClassicPoll from "./ClassicPoll/ClassicPoll.jsx";
 import BubblePoll from "./BubblePoll/BubblePoll.jsx";
+import CloudPoll from "./CloudPoll/CloudPoll.jsx";
 import BarPoll from "./BarPoll/BarPoll.jsx";
 
 const Polls = {
   classic: ClassicPoll,
   bubble: BubblePoll,
+  cloud: CloudPoll,
   bar: BarPoll,
 };
 
