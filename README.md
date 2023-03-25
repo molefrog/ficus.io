@@ -42,7 +42,7 @@ update({ votes: [...] })
 umount()
 ```
 
-## Configuration & Theming
+### Configuration & Theming
 
 Poll configuration is flexible and supports both short and verbose forms. See examples below:
 
@@ -75,6 +75,13 @@ createPoll(el, {
   }
 });
 ```
+
+### How `widget.js` is deployed
+
+Website and widget are built separately by Vite. Widget build outputs `manifest.json` that contains
+a mapping between the entry point name and hashed chunk name. All static assets and chunks are
+cached indefinitely, except for `/widget.js` which is a serverless endpoint that returns an ESM
+shim.
 
 ## Credits
 
