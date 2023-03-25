@@ -2,6 +2,7 @@
   font-family: var(--poll-font);
   color: var(--poll-text-color);
   font-size: 22px;
+  line-height: 1.6;
 
   display: flex;
   flex-flow: column nowrap;
@@ -12,7 +13,7 @@
 
 .question {
   font-size: 42px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .subheader {
@@ -20,7 +21,7 @@
 }
 
 .subheader-link {
-  font-weight: bold;
+  font-weight: 600;
   text-decoration: underline;
   margin-left: 8px;
   padding: 2px 5px;
@@ -47,7 +48,7 @@
 .percent {
   font-size: 42px;
   line-height: 28px;
-  font-weight: bold;
+  font-weight: 700;
   padding-left: 25px;
   width: 100px;
   align-self: flex-end;
@@ -57,7 +58,7 @@
 
 .result-header {
   font-size: 34px;
-  font-weight: bold;
+  font-weight: 600;
   margin-bottom: 4px;
 }
 

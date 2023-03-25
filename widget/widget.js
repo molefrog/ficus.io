@@ -1,5 +1,5 @@
 import { h, render } from "preact";
-import { Poll } from "./Poll";
+import { Poll } from "./Poll/Poll";
 
 // framework agnostic polls
 export const createPoll = (element, { votes, ...rest }) => {

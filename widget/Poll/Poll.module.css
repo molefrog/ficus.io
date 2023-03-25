@@ -1,0 +1,13 @@
+.container {
+  position: relative;
+  background: var(--poll-background-color);
+}
+
+.scaled {
+  all: initial; /* reset all styles */
+  transform-origin: 0 0;
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform: scale(1); /* to be overriden in JS */
+}

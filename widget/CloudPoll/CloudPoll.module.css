@@ -5,6 +5,7 @@
   --bar-label-color: var(--poll-background-color);
 
   font-size: 22px;
+  line-height: 1.6;
   box-sizing: border-box;
   text-align: left;
   position: relative;
@@ -75,7 +76,7 @@
   font-size: 24px;
   line-height: 1.222;
   text-decoration: underline;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .ball {

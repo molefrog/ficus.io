@@ -2,6 +2,7 @@
   color: var(--poll-text-color);
   font-family: var(--poll-font);
   font-size: 22px;
+  line-height: 1.6;
 
   box-sizing: border-box;
   display: flex;
@@ -12,7 +13,7 @@
 
 .barTooltipInner {
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 600;
   padding: 6px 10px;
   border-radius: 4px;
 }
@@ -23,6 +24,7 @@
 
 .subheaderInner {
   background-color: black;
+  font-weight: 500;
   padding: 4px 12px;
   border-radius: 4px;
 }
@@ -50,7 +52,7 @@
 .subheaderLink {
   color: inherit;
   text-decoration: underline;
-  font-weight: bold;
+  font-weight: 600;
   display: inline-block;
 }
 
@@ -106,7 +108,7 @@
   font-size: 18px;
   text-align: center;
   padding: 5px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .labelCol {

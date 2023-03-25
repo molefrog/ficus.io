@@ -1,10 +1,12 @@
 import { h } from "preact";
 import { useRef, useLayoutEffect } from "preact/hooks";
 
-import ClassicPoll from "./ClassicPoll/ClassicPoll.jsx";
-import BubblePoll from "./BubblePoll/BubblePoll.jsx";
-import CloudPoll from "./CloudPoll/CloudPoll.jsx";
-import BarPoll from "./BarPoll/BarPoll.jsx";
+import ClassicPoll from "../ClassicPoll/ClassicPoll.jsx";
+import BubblePoll from "../BubblePoll/BubblePoll.jsx";
+import CloudPoll from "../CloudPoll/CloudPoll.jsx";
+import BarPoll from "../BarPoll/BarPoll.jsx";
+
+import styles from "./Poll.module.css";
 
 import {
   normalizePollConfig,
@@ -47,12 +49,7 @@ export const Poll = ({ config, votes, type, theme = {}, className }) => {
     const w = parent.offsetWidth;
     const slide = parent.childNodes[0];
 
-    slide.style = `
-      transform-origin: 0 0;
-      top: 0;
-      left: 0;
-      position: absolute;
-      transform: scale(${w / baseWidth})`;
+    slide.style = `transform: scale(${w / baseWidth})`;
   });
 
   useLayoutEffect(() => {
@@ -67,15 +64,14 @@ export const Poll = ({ config, votes, type, theme = {}, className }) => {
   return (
     <div
       ref={parentRef}
-      className={className}
+      className={`${styles.container} ${className}`}
       style={{
+        // preserve aspect ratio
         paddingBottom: `calc(100% / ${aspectRatio})`,
-        position: "relative",
-        background: "var(--poll-background-color)",
         ...cssVarsInlineStyle,
       }}
     >
-      <div>
+      <div className={styles.scaled}>
         <Component
           width={`${baseWidth}px`}
           height={`${baseWidth / aspectRatio}px`}
