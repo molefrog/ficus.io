@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Ficus.io</title>
-    <link rel="icon" key="favicon" type="image/svg+xml" href="/ficus-logo.svg" />
+    <link rel="icon" key="favicon" type="image/svg+xml" href="/assets/ficus-logo.svg" />
+
+    <meta property="og:url" content="https://ficus.io" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Interactive Presentations" />
+    <meta property="og:image" content="/opengraph.jpg" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://ficus.io" />
+    <meta property="twitter:title" content="Ficus.io" />
+    <meta property="twitter:description" content="Interactive Presentations" />
+    <meta property="twitter:image" content="/opengraph.jpg" />
 
     <style>
       :root {
@@ -73,7 +84,7 @@
         class="main__logo"
         width="32px"
         height="32px"
-        src="/ficus-logo.svg"
+        src="/assets/ficus-logo.svg"
         alt="Ficus.io logo"
       />
       <p>
@@ -123,7 +134,7 @@
 
       const [update_1] = createPoll(document.querySelector(".slides__slide--classic"), {
         config,
-        type: "classic",
+        type: "cloud",
         votes: [
           { id: "p1", answers: ["a1", "a2"] },
           { id: "p2", answer: "a2" },

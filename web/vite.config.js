@@ -2,7 +2,6 @@
 import { resolve } from "path";
 
 export default {
-  publicDir: resolve(__dirname, "assets"),
   build: {
     target: "modules",
     emptyOutDir: true, // clean dist (must be called before building the widget)
