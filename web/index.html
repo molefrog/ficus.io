@@ -92,6 +92,29 @@
         aspect-ratio: 4/3;
       }
 
+      .slides__slide > div {
+        transition: opacity 1s ease, transform 0.5s ease;
+        transform: translateY(-100%);
+        border-radius: 4px;
+      }
+
+      .slides__slide.slides__slide--loaded > div {
+        opacity: 1;
+        transform: none;
+      }
+
+      .slides__slide:nth-of-type(1) > div {
+        transition-delay: 0s;
+      }
+
+      .slides__slide:nth-of-type(2) > div {
+        transition-delay: 0.1s;
+      }
+
+      .slides__slide:nth-of-type(3) > div {
+        transition-delay: 0.2s;
+      }
+
       .credits {
         display: flex;
         gap: 12px;
@@ -214,7 +237,15 @@
         ],
       };
 
-      const [update_1] = createPoll(document.querySelector(".slides__slide--classic"), {
+      const slide_1 = document.querySelector(".slides__slide:nth-of-type(1)");
+
+      const slide_2 = document.querySelector(".slides__slide:nth-of-type(2)");
+
+      const slide_3 = document.querySelector(".slides__slide:nth-of-type(3)");
+
+      const slides = [slide_1, slide_2, slide_3];
+
+      const [update_1] = createPoll(slide_1, {
         config,
         type: "classic",
         votes: [
@@ -226,7 +257,7 @@
         ],
       });
 
-      const [update_2] = createPoll(document.querySelector(".slides__slide--bar"), {
+      const [update_2] = createPoll(slide_2, {
         config,
         type: "bar",
         votes: [
@@ -236,7 +267,7 @@
         ],
       });
 
-      const [update_3] = createPoll(document.querySelector(".slides__slide--cloud"), {
+      const [update_3] = createPoll(slide_3, {
         config,
         type: "cloud",
         votes: [
@@ -245,6 +276,8 @@
           { id: "p3", answers: ["a2"] },
         ],
       });
+
+      slides.forEach((s) => s.classList.add("slides__slide--loaded"));
     </script>
   </body>
 </html>
