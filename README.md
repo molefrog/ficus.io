@@ -1,11 +1,14 @@
 # :four_leaf_clover: ficus.io
 
-Ficus _was_ an app for making online presentations with interactive real-time slides (polls, comments, rating etc.), circa 2014.
+Ficus **was** an app for making online presentations with interactive real-time slides: polls, comments, ratings etc., built circa 2014.
 
-The app isn't available anymore, however you are free to use embeddable Ficus polls in your apps:
+
+## Embeddable Ficus polls
+
+The web app isn't available anymore, however you are free to use embeddable components in your code:
 
 ```js
-// import ESM directly from Ficus.io CDN
+// import ESM directly from ficus.io CDN
 import { createPoll } from "https://ficus.io/widget.js";
 
 const [update, unmount] = createPoll(rootElement, {
@@ -36,7 +39,7 @@ umount()
 ```
 
 ## Configuration & Theming
-Poll configuration is really flexible and supports both short and advanced forms. See the examples below:
+Poll configuration is flexible and supports both short and verbose forms. See examples below:
 
 ```js
 createPoll(el, { 
@@ -49,7 +52,7 @@ createPoll(el, {
 update({ votes: ['0', '0', '1'] }) // two votes for 'Cats' and one for 'Dogs'
 ```
 
-Fonts and colors are customizable:
+Fonts and colors are also customizable:
 
 ```js
 createPoll(el, { 
