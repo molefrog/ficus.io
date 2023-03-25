@@ -1,7 +1,7 @@
 .poll {
-  font-family: system-ui;
+  color: var(--poll-text-color);
+  font-family: var(--poll-font);
   font-size: 22px;
-  color: black;
 
   box-sizing: border-box;
   display: flex;
@@ -11,15 +11,13 @@
 }
 
 .barTooltipInner {
-  background-color: #222;
-  color: white;
   font-size: 22px;
   font-weight: bold;
   padding: 6px 10px;
   border-radius: 4px;
 }
 
-.barToolip {
+.barTooltip {
   padding-bottom: 8px;
 }
 

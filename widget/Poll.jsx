@@ -6,7 +6,12 @@ import BubblePoll from "./BubblePoll/BubblePoll.jsx";
 import CloudPoll from "./CloudPoll/CloudPoll.jsx";
 import BarPoll from "./BarPoll/BarPoll.jsx";
 
-import { normalizePollConfig, normalizePollVotes } from "./state.js";
+import {
+  normalizePollConfig,
+  normalizePollVotes,
+  themeToCSSVars,
+  parseAspectRatio,
+} from "./configuration.js";
 
 const Polls = {
   classic: ClassicPoll,
@@ -15,32 +20,29 @@ const Polls = {
   bar: BarPoll,
 };
 
-// "4:2" => 0.5
-const parseAspectRatio = (ratio) => {
-  if (typeof ratio === "string") {
-    const [width, height] = ratio.split(":");
-    return parseInt(width) / parseInt(height);
-  }
-
-  return ratio;
-};
-
 /**
  * Entry point for the Ficus Poll widget
  * */
-export const FicusPoll = ({ config, votes, type, className }) => {
+export const Poll = ({ config, votes, type, theme = {}, className }) => {
   const Component = Polls[type] || Polls.classic;
 
+  // makes sure that all polls receive their data in the same format
   config = normalizePollConfig(config);
   votes = normalizePollVotes(config, votes);
 
+  // get the poll results based on the votes
   const summary = pollSummary(config, votes);
 
-  const aspectRatio = parseAspectRatio(config.aspectRatio || "4:3");
-  const baseWidth = 1024;
+  // theming and customization
+  const aspectRatio = parseAspectRatio(theme.aspectRatio || "4:3");
+  const baseWidth = theme.baseWidth || 1024;
+  const cssVarsInlineStyle = themeToCSSVars(theme);
 
   const parentRef = useRef(null);
 
+  /**
+   * Resize the poll to fit the parent container
+   */
   const resize = useRef((parent = parentRef.current) => {
     const w = parent.offsetWidth;
     const slide = parent.childNodes[0];
@@ -69,7 +71,8 @@ export const FicusPoll = ({ config, votes, type, className }) => {
       style={{
         paddingBottom: `calc(100% / ${aspectRatio})`,
         position: "relative",
-        background: "white", // todo
+        background: "var(--poll-background-color)",
+        ...cssVarsInlineStyle,
       }}
     >
       <div>

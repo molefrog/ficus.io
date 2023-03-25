@@ -14,8 +14,8 @@ const Bar = ({ width, bar, bars }) => {
 
   return (
     <div style={{ width: `${width}%` }} className={styles.bar}>
-      <div className={styles.barToolip}>
-        <div className={styles.barToolipInner}>
+      <div className={styles.barTooltip}>
+        <div className={styles.barTooltipInner}>
           {bar.votesForAnswer} · {(bar.percentage * 100.0).toFixed(1)}%
         </div>
       </div>

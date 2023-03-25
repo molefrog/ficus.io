@@ -1,7 +1,7 @@
 .poll {
-  font-family: system-ui;
+  font-family: var(--poll-font);
+  color: var(--poll-text-color);
   font-size: 22px;
-  color: black;
 
   display: flex;
   flex-flow: column nowrap;

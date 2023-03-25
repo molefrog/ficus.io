@@ -73,3 +73,24 @@ export const normalizePollVotes = (config, votes) => {
 
   return withFilteredAnswers.filter((vote) => vote.answers.length > 0);
 };
+
+/**
+ * Theme to React-style CSS variables
+ */
+export const themeToCSSVars = (theme) => {
+  return {
+    "--poll-text-color": theme.textColor || "#1a1a1a",
+    "--poll-background-color": theme.backgroundColor || "#ffffff",
+    "--poll-font": theme.font || "system-ui",
+  };
+};
+
+// "4:2" => 0.5
+export const parseAspectRatio = (ratio) => {
+  if (typeof ratio === "string") {
+    const [width, height] = ratio.split(":");
+    return parseInt(width) / parseInt(height);
+  }
+
+  return ratio;
+};

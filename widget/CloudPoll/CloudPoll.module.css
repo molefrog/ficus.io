@@ -1,11 +1,10 @@
 .poll {
-  font-family: system-ui;
-  font-size: 22px;
-  color: black;
-  background-color: white;
-  --bar-color: black;
-  --background-color: white;
+  font-family: var(--poll-font);
+  color: var(--poll-text-color);
+  --bar-color: var(--poll-text-color);
+  --bar-label-color: var(--poll-background-color);
 
+  font-size: 22px;
   box-sizing: border-box;
   text-align: left;
   position: relative;
@@ -97,7 +96,7 @@
   font-size: 20px;
   border-radius: 20px;
   background-color: var(--bar-color);
-  color: var(--background-color);
+  color: var(--bar-label-color);
   padding-right: 10px;
   padding-left: 10px;
   min-width: 10px;
