@@ -73,3 +73,6 @@ createPoll(el, {
   }
 });
 ```
+
+## Credits
+Built by the former members of Code Hipsters: Eugene, Sam, Tikhon, Alexey, Victor and Boris.
