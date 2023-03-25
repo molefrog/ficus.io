@@ -3,6 +3,9 @@
 Ficus **was** an app for making online presentations with interactive real-time slides: polls, comments, ratings etc., built circa 2014.
 
 
+![See Ficus.io in action](web/assets/in-action.webp)
+
+
 ## Embeddable Ficus polls
 
 The web app isn't available anymore, however you are free to use embeddable components in your code:
