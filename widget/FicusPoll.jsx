@@ -6,6 +6,8 @@ import BubblePoll from "./BubblePoll/BubblePoll.jsx";
 import CloudPoll from "./CloudPoll/CloudPoll.jsx";
 import BarPoll from "./BarPoll/BarPoll.jsx";
 
+import { normalizePollConfig, normalizePollVotes } from "./state.js";
+
 const Polls = {
   classic: ClassicPoll,
   bubble: BubblePoll,
@@ -29,12 +31,10 @@ const parseAspectRatio = (ratio) => {
 export const FicusPoll = ({ config, votes, type, className }) => {
   const Component = Polls[type] || Polls.classic;
 
-  const normalizedVotes = votes.map((vote) => {
-    const val = vote.answers || vote.answer;
-    return { ...vote, answer: undefined, answers: Array.isArray(val) ? val : [val] };
-  });
+  config = normalizePollConfig(config);
+  votes = normalizePollVotes(config, votes);
 
-  const summary = pollSummary(config, normalizedVotes);
+  const summary = pollSummary(config, votes);
 
   const aspectRatio = parseAspectRatio(config.aspectRatio || "4:3");
   const baseWidth = 1024;
@@ -77,7 +77,7 @@ export const FicusPoll = ({ config, votes, type, className }) => {
           width={`${baseWidth}px`}
           height={`${baseWidth / aspectRatio}px`}
           config={config}
-          votes={normalizedVotes}
+          votes={votes}
           summary={summary}
         />
       </div>
