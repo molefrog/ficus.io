@@ -16,6 +16,8 @@ The web app isn't available anymore, however you are free to use embeddable comp
 import { createPoll } from "https://ficus.io/widget.js";
 
 const [update, unmount] = createPoll(rootElement, {
+  type: "classic", // see configuration section below
+
   config: {
     question: "Yes or No?",
 
@@ -55,6 +57,22 @@ createPoll(el, {
 });
 
 update({ votes: ["0", "0", "1"] }); // two votes for 'Cats' and one for 'Dogs'
+```
+
+There are 4 types of polls (e.g. the graphic visualization of the polling process): 
+  - `"classic"`
+  - `"bar"`
+  - `"cloud"`
+  - `"bubble`
+
+Check ficus.io website for reference.
+
+```js
+createPoll(el, {
+  type: "bar", // or "classic", "cloud", "bubble". Default: "classic" 
+
+  config: { ... },
+});
 ```
 
 Fonts and colors are also customizable:
