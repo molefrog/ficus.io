@@ -25,7 +25,7 @@ const Polls = {
 /**
  * Entry point for the Ficus Poll widget
  * */
-export const Poll = ({ config, votes, type, theme = {}, className }) => {
+export const Poll = ({ config, votes = [], type, theme = {}, className }) => {
   const Component = Polls[type] || Polls.classic;
 
   // makes sure that all polls receive their data in the same format
