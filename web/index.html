@@ -214,70 +214,82 @@
       import { createPoll } from "https://ficus.io/widget.js";
 
       const config = {
-        question: "What is the best album of 2016?",
+        question: "What would be a capital city of planet Earth?",
         url: "ficus.io",
         answers: [
           {
             id: "a1",
             color: "rgba(61, 118, 230, 1.00)",
-            label: "Chance The Rapper – Coloring Book",
+            label: "Tokyo – Japan",
           },
-          { id: "a2", color: "rgba(241, 196, 15, 1.00)", label: "Beyoncé – Lemonade" },
+          { id: "a2", color: "rgba(241, 196, 15, 1.00)", label: "Paris - France" },
           {
             id: "a3",
             color: "rgba(230, 126, 34, 1.00)",
-            label: "Frank Ocean – Blonde",
+            label: "London – United Kingdom",
           },
-          { id: "a4", color: "rgba(231, 76, 60, 1.00)", label: "David Bowie – Star" },
+          { id: "a4", color: "rgba(231, 76, 60, 1.00)", label: "New York - USA" },
           {
             id: "a5",
             color: "rgba(142, 68, 173, 1.00)",
-            label: "Kanye West – The Life Of Pablo",
+            label: "Paphos - Cyprus",
           },
         ],
       };
 
       const slide_1 = document.querySelector(".slides__slide:nth-of-type(1)");
-
       const slide_2 = document.querySelector(".slides__slide:nth-of-type(2)");
-
       const slide_3 = document.querySelector(".slides__slide:nth-of-type(3)");
 
-      const slides = [slide_1, slide_2, slide_3];
+      const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-      const [update_1] = createPoll(slide_1, {
+      function simulateVoting(el, options) {
+        let state = [];
+        let freq = 1000;
+
+        const [poll] = createPoll(el, options);
+        const answers = options.config.answers.map((a) => a.id);
+
+        const randomVote = () => {
+          const numAnswers = 4;
+          const vote = {
+            id: `p${Math.random()}`,
+            answers: Array(numAnswers)
+              .fill()
+              .map(() => pick(answers)),
+          };
+
+          state.push(vote);
+          poll({ votes: state });
+        };
+
+        const tick = () => {
+          randomVote();
+
+          setTimeout(tick, freq + 0.5 * freq * Math.random());
+          freq = Math.max(200, freq - 100);
+          if (Math.random() > 0.95) freq = 1500;
+        };
+
+        tick();
+
+        el.classList.add("slides__slide--loaded");
+      }
+
+      simulateVoting(slide_1, {
         config,
         type: "classic",
-        votes: [
-          { id: "p1", answers: ["a1", "a2"] },
-          { id: "p2", answer: "a2" },
-          { id: "p3", answers: ["a2"] },
-          { id: "p4", answers: ["a3"] },
-          { id: "p5", answers: ["a4"] },
-        ],
       });
 
-      const [update_2] = createPoll(slide_2, {
+      simulateVoting(slide_2, {
         config,
         type: "bar",
-        votes: [
-          { id: "p1", answers: ["a1", "a2"] },
-          { id: "p2", answer: "a2" },
-          { id: "p3", answers: ["a2"] },
-        ],
       });
 
-      const [update_3] = createPoll(slide_3, {
+      simulateVoting(slide_3, {
         config,
         type: "cloud",
-        votes: [
-          { id: "p1", answers: ["a1", "a2"] },
-          { id: "p2", answer: "a2" },
-          { id: "p3", answers: ["a2"] },
-        ],
       });
-
-      slides.forEach((s) => s.classList.add("slides__slide--loaded"));
     </script>
   </body>
 </html>
